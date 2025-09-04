@@ -5,16 +5,30 @@
       <h1>Agasobanuyeshow</h1>
     </header>
     <nav>
-      <button @click="view = 'firms'">Firms</button>
+      <button @click="view = 'Home'">Home</button>
       <button @click="view = 'login'">Login</button>
       <button @click="view = 'signup'">Sign Up</button>
     </nav>
     <main>
-      <section v-if="view === 'firms'">
-        <h2>Firms</h2>
-        <ul>
-          <li v-for="firm in firms" :key="firm.id">{{ firm.name }}</li>
-        </ul>
+      <section v-if="view === 'video'">
+  <h2>Now Playing</h2>
+  <div class="video-container">
+    <iframe 
+      width="100%" 
+      height="369" 
+      src="https://www.youtube.com/embed/ixcNR-FYIVc?list=RDGMEMECQexVIf8HjAQgdybEHXKw"
+      title="un jour tu pleures un jour tu ris lyrics Julio Iglesias"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+  <button @click="view = 'video'">Watch Video</button>
+      <section v-if="view === 'about'">
+        <h2>About Us</h2>
+        <p>Welcome to Agasobanuyeshow! We are dedicated to providing the best services.</p>
       </section>
       <section v-if="view === 'login'">
         <h2>Login</h2>
@@ -30,8 +44,7 @@
           <input v-model="signupForm.name" type="text" placeholder="Name" required />
           <input v-model="signupForm.email" type="email" placeholder="Email" required />
           <input v-model="signupForm.password" type="password" placeholder="Password" required />
-          <input v-model="signupForm.confirmPassword" type="password" placeholder="Confirm Password" required />
-          <input vmodel="signupForm.phone" type="tel" placeholder="Phone Number" />
+          <input v-model="signupForm.comfirmPassword" type="password" placeholder="Confirm Password" required />
           <button type="submit">Sign Up</button>
         </form>
       </section>
@@ -44,12 +57,7 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      view: "firms",
-      firms: [
-        { id: 1, name: "hancock" },
-        { id: 2, name: "Death note" },
-        { id: 3, name: "The taich mast" }
-      ],
+      view: "Home",
       loginForm: {
         email: "",
         password: ""
@@ -57,7 +65,8 @@ export default {
       signupForm: {
         name: "",
         email: "",
-        password: ""
+        password: "",
+        comfirmPassword: ""
       }
     };
   },
